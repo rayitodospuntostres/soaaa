@@ -6,9 +6,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./productos.component.scss']
 })
 export class ProductosComponent {
-  products = [
-    { name: 'Producto 1', description: 'Descripción del producto 1', price: 10.99, image: 'https://via.placeholder.com/150' },
-    { name: 'Producto 2', description: 'Descripción del producto 2', price: 20.99, image: 'https://via.placeholder.com/150' },
-    { name: 'Producto 3', description: 'Descripción del producto 3', price: 30.99, image: 'https://via.placeholder.com/150' }
+  productos = [
+    {
+      id: 1,
+      name: 'Producto 1',
+      description: 'Descripción del producto 1',
+      price: 100.99,
+      image: 'https://via.placeholder.com/150',
+    },
+    {
+      id: 2,
+      name: 'Producto 2',
+      description: 'Descripción del producto 2',
+      price: 200.99,
+      image: 'https://via.placeholder.com/150',
+    },
+    {
+      id: 3,
+      name: 'Producto 3',
+      description: 'Descripción del producto 3',
+      price: 300.99,
+      image: 'https://via.placeholder.com/150',
+    },
   ];
 }
