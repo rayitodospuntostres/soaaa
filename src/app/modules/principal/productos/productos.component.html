@@ -1,7 +1,18 @@
-<div class="product-container">
-  <div class="product-card" *ngFor="let product of products">
-    <h3>{{ product.name }}</h3>
-    <p>{{ product.description }}</p>
-    <p><strong>Price:</strong> {{ product.price | currency }}</p>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Nuestros Productos</h1>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let product of products">
+      <div class="card h-100">
+        
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text text-success fw-bold">Precio: ${{ product.price }}</p>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-primary">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

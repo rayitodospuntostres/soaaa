@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http'; // Importación necesar
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductoComponent } from './modules/principal/productos/productos.component'; // Ajustar si es necesario
+import { ProductosComponent } from './modules/principal/productos/productos.component';
 import { CabeceraComponent } from './modules/principal/cabecera/cabecera.component';
 import { FooterComponent } from './modules/principal/footer/footer.component';
 import { InicioComponent } from './modules/principal/inicio/inicio.component';
@@ -16,12 +16,14 @@ import { NosotrosComponent } from './modules/principal/nosotros/nosotros.compone
     CabeceraComponent,
     FooterComponent,
     InicioComponent,
-    NosotrosComponent
+    NosotrosComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
 
   ],
   providers: [],
