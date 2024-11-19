@@ -28,5 +28,33 @@ export class ProductosComponent {
       price: 300.99,
       image: 'https://via.placeholder.com/150',
     },
+    {
+      id: 4,
+      name: 'Producto 3',
+      description: 'Descripción del producto 3',
+      price: 300.99,
+      image: 'https://via.placeholder.com/150',
+    },
+    {
+      id: 5,
+      name: 'Producto 3',
+      description: 'Descripción del producto 3',
+      price: 300.99,
+      image: 'https://via.placeholder.com/150',
+    },
+    {
+      id: 6,
+      name: 'Producto 3',
+      description: 'Descripción del producto 3',
+      price: 300.99,
+      image: 'https://via.placeholder.com/150',
+    },
+    {
+      id: 7,
+      name: 'Producto 3',
+      description: 'Descripción del producto 3',
+      price: 300.99,
+      image: 'https://via.placeholder.com/150',
+    },
   ];
 }
