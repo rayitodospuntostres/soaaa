@@ -1,15 +1,16 @@
-// src/app/modules/dashboard/dashboard.module.ts
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { ProductosAdmComponent } from './productos-adm/productos-adm.component';
+import { ProductosComponent } from './productos/productos.component';
 
 @NgModule({
   declarations: [
-    ProductosAdmComponent, // Agregamos el componente ProductosAdm
+    ProductosComponent, // Declarar el componente aquí
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     DashboardRoutingModule,
   ],
 })
