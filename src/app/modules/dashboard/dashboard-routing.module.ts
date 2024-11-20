@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductosAdmComponent } from './productos-adm/productos-adm.component';
 
 const routes: Routes = [
-  { path: '', component: ProductosAdmComponent }, // Ruta inicial del Dashboard
+  { path: '', component: ProductosAdmComponent },
 ];
 
 @NgModule({

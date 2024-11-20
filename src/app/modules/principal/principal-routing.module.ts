@@ -2,9 +2,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
+import { ProductosComponent } from './productos/productos.component';
+import { NosotrosComponent } from './nosotros/nosotros.component';
 
 const routes: Routes = [
-  { path: '', component: InicioComponent }, // Ruta inicial de Principal
+  { path: '', component: InicioComponent },
+  { path: 'productos', component: ProductosComponent },
+  { path: 'nosotros', component: NosotrosComponent },
 ];
 
 @NgModule({

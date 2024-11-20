@@ -9,13 +9,13 @@ import { CabeceraComponent } from './modules/principal/cabecera/cabecera.compone
 import { FooterComponent } from './modules/principal/footer/footer.component';
 import { InicioComponent } from './modules/principal/inicio/inicio.component';
 import { NosotrosComponent } from './modules/principal/nosotros/nosotros.component';
+import { PrincipalModule } from './modules/principal/principal.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     CabeceraComponent,
     FooterComponent,
-    InicioComponent,
     NosotrosComponent,
     ProductosComponent
   ],
@@ -23,6 +23,7 @@ import { NosotrosComponent } from './modules/principal/nosotros/nosotros.compone
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    PrincipalModule
 
 
   ],
