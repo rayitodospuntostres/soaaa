@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from './modules/principal/inicio/inicio.component';
-import { ProductosComponent } from './modules/principal/productos/productos.component';
-import { NosotrosComponent } from './modules/principal/nosotros/nosotros.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/12il', pathMatch: 'full' },
-  { path: '12il', component: InicioComponent },
-  { path: 'productos', component: ProductosComponent },
-  { path: 'nosotros', component: NosotrosComponent },
+  { path: '', redirectTo: '/principal', pathMatch: 'full' },
+  { path: 'principal', loadChildren: () => import('./modules/principal/principal.module').then(m => m.PrincipalModule) },
+  { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: '**', redirectTo: '/principal' }, 
 ];
 
 @NgModule({
