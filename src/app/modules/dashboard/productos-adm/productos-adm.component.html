@@ -1,1 +1,60 @@
-<p>productos-adm works!</p>
+<div class="container mt-4">
+  <h1>Administración de Productos</h1>
+  <button class="btn btn-primary mb-3" (click)="abrirFormulario()">Agregar Producto</button>
+
+  <!-- Tabla de productos -->
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.stock }}</td>
+        <td>
+          <button class="btn btn-warning me-2" (click)="editarProducto(producto)">Editar</button>
+          <button class="btn btn-danger" (click)="eliminarProducto(producto.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal para agregar/editar productos -->
+  <div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="productoModalLabel">{{ editMode ? 'Editar Producto' : 'Agregar Producto' }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="productoForm" (ngSubmit)="guardarProducto()">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input formControlName="nombre" id="nombre" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label for="precio" class="form-label">Precio</label>
+              <input formControlName="precio" id="precio" type="number" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label for="stock" class="form-label">Stock</label>
+              <input formControlName="stock" id="stock" type="number" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="productoForm.invalid">
+              {{ editMode ? 'Actualizar' : 'Crear' }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
