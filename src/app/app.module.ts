@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CabeceraComponent } from './modules/principal/cabecera/cabecera.component';
 import { FooterComponent } from './modules/principal/footer/footer.component';
 import { PrincipalModule } from './modules/principal/principal.module';
+import { ProductosAdminService } from './services/productos-admin.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { PrincipalModule } from './modules/principal/principal.module';
 
 
   ],
-  providers: [],
+  providers: [ProductosAdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
