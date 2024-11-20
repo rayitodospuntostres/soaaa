@@ -13,7 +13,7 @@
       <tr *ngFor="let producto of productos; let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ producto.name }}</td>
-        <td>{{ producto.price | currency }}</td>
+        <td>{{ producto.price}}</td>
         <td>{{ producto.stock }}</td>
       </tr>
     </tbody>

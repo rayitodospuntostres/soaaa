@@ -3,11 +3,11 @@ import { ProductosAdminService } from '../../../services/productos-admin.service
 import { Producto } from '../../../models/producto.model';
 
 @Component({
-  selector: 'app-productos',
-  templateUrl: './productos.component.html',
-  styleUrls: ['./productos.component.css']
+  selector: 'app-productos-adm',
+  templateUrl: './productos-adm.component.html',
+  styleUrls: ['./productos-adm.component.css']
 })
-export class ProductosComponent implements OnInit {
+export class ProductosAdmComponent implements OnInit {
   productos: Producto[] = []; // Lista de productos
 
   constructor(private productosService: ProductosAdminService) {}
