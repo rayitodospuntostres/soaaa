@@ -9,6 +9,7 @@ import { FooterComponent } from './modules/principal/footer/footer.component';
 import { PrincipalModule } from './modules/principal/principal.module';
 import { ProductosAdminService } from './services/productos-admin.service';
 import { ProductService } from './services/product.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductService } from './services/product.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    PrincipalModule
+    PrincipalModule,
+    BrowserAnimationsModule
 
 
   ],

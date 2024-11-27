@@ -32,6 +32,10 @@ export class ProductosAdminService {
     return this.http.delete<void>(`${this.baseUrl}/delete/${id}`);
   }
 
+  actualizarProducto(id: number, producto: Producto): Observable<Producto> {
+    return this.http.put<Producto>(`${this.baseUrl}/update/${id}`, producto);
+  }
+
   // Endpoint de ejemplo (opcional)
   ejemplo(): Observable<string> {
     return this.http.get<string>(`${this.baseUrl}/example`);
