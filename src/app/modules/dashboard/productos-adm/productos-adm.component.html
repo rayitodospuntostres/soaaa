@@ -1,9 +1,35 @@
 <div class="container mt-4">
   <h1>Gestión de Productos</h1>
 
+  <!-- Contenedor para el botón de añadir producto -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <!-- Botón de Añadir Producto -->
+    <button mat-raised-button color="primary" (click)="abrirFormularioNuevoProducto()">Añadir Nuevo Producto</button>
+  </div>
+
+  <!-- Formulario para crear un nuevo producto (oculto inicialmente) -->
+  <div *ngIf="mostrarFormulario" class="formulario-nuevo-producto">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput [(ngModel)]="nuevoProducto.name" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Precio</mat-label>
+      <input matInput [(ngModel)]="nuevoProducto.price" type="number" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Stock</mat-label>
+      <input matInput [(ngModel)]="nuevoProducto.stock" type="number" required>
+    </mat-form-field>
+
+    <div class="botones-formulario">
+      <button mat-raised-button color="primary" (click)="guardarNuevoProducto()">Guardar</button>
+      <button mat-raised-button color="warn" (click)="cerrarFormulario()">Cancelar</button>
+    </div>
+  </div>
+
   <!-- Tabla de Angular Material -->
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
     <!-- Columna de Índice -->
     <ng-container matColumnDef="index">
       <th mat-header-cell *matHeaderCellDef>#</th>

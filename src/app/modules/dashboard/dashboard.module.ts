@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ProductosAdmComponent } from './../dashboard/productos-adm/productos-adm.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,10 @@ import { MatButtonModule } from '@angular/material/button';
     DashboardRoutingModule,
     MatTableModule,
     MatPaginatorModule, // Módulo para paginación
-    MatButtonModule
-
+    MatButtonModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule
   ],
 })
 export class DashboardModule {}

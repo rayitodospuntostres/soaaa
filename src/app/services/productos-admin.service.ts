@@ -40,4 +40,8 @@ export class ProductosAdminService {
   ejemplo(): Observable<string> {
     return this.http.get<string>(`${this.baseUrl}/example`);
   }
+
+  guardarProducto(producto: Producto): Observable<Producto> {
+    return this.http.post<Producto>(`${this.baseUrl}save`, producto);
+  }
 }

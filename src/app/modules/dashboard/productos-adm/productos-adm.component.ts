@@ -14,6 +14,8 @@ export class ProductosAdmComponent implements OnInit {
   displayedColumns: string[] = ['index', 'id', 'name', 'price', 'stock', 'actions'];
   dataSource = new MatTableDataSource<Producto>();
   currentPage: number = 0; // Para almacenar la página actual
+  nuevoProducto: Producto = { id: 0, name: '', price: 0, stock: 0 };
+  mostrarFormulario: boolean = false;  // Controla si se muestra el formulario
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -29,12 +31,44 @@ export class ProductosAdmComponent implements OnInit {
         console.log('Productos:', productos);
         this.dataSource.data = productos;
         this.dataSource.paginator = this.paginator;
-        this.paginator.pageIndex = this.currentPage; // Restaurar la página actual
+
+        // Restaurar la página actual después de cargar los productos
+        if (this.paginator) {
+          this.paginator.pageIndex = this.currentPage; // Restaurar la página actual
+        }
       },
       (error) => {
+        Swal.fire('Error', 'No se pudo obtener los productos', 'error');
         console.error('Error al obtener productos:', error);
       }
     );
+  }
+
+  abrirFormularioNuevoProducto(): void {
+    this.mostrarFormulario = true;  // Muestra el formulario
+    this.nuevoProducto = { id: 0, name: '', price: 0, stock: 0 };  // Resetea el formulario
+  }
+
+  cerrarFormulario(): void {
+    this.mostrarFormulario = false;  // Oculta el formulario
+  }
+
+  guardarNuevoProducto(): void {
+    if (this.nuevoProducto.name && this.nuevoProducto.price > 0 && this.nuevoProducto.stock >= 0) {
+      this.productosService.guardarProducto(this.nuevoProducto).subscribe(
+        (productoCreado) => {
+          Swal.fire('Producto creado', 'El producto ha sido creado exitosamente', 'success');
+          this.obtenerProductos();  // Recarga la lista de productos
+          this.cerrarFormulario();  // Cierra el formulario
+        },
+        (error) => {
+          Swal.fire('Error', 'No se pudo crear el producto', 'error');
+          console.error('Error al guardar el producto:', error);
+        }
+      );
+    } else {
+      Swal.fire('Error', 'Por favor, complete todos los campos correctamente', 'error');
+    }
   }
 
   editarProducto(producto: Producto): void {
@@ -81,7 +115,7 @@ export class ProductosAdmComponent implements OnInit {
             },
             (error) => {
               Swal.fire('Error', 'No se pudo actualizar el producto', 'error');
-              console.error(error);
+              console.error('Error al actualizar el producto:', error);
             }
           );
         }
@@ -93,5 +127,10 @@ export class ProductosAdmComponent implements OnInit {
     const currentPage = this.paginator?.pageIndex || 0;
     const pageSize = this.paginator?.pageSize || 5;
     return currentPage * pageSize + index + 1;
+  }
+
+  // Aquí podemos manejar la paginación para cambiar de página cuando se navega
+  cambiarPagina(event: any): void {
+    this.currentPage = event.pageIndex; // Guardamos la página actual al cambiar de página
   }
 }
