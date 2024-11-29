@@ -43,7 +43,7 @@ export class ProductosAdmComponent implements OnInit {
       }
     );
   }
-  
+
 
   abrirFormularioNuevoProducto(): void {
     this.mostrarFormulario = true;  // Muestra el formulario
@@ -122,6 +122,36 @@ export class ProductosAdmComponent implements OnInit {
         }
       }
     });
+  }
+
+   // Confirmar eliminación de un producto
+   confirmarEliminacion(id: number): void {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Este producto será eliminado permanentemente',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarProducto(id);
+      }
+    });
+  }
+
+  // Eliminar producto
+  eliminarProducto(id: number): void {
+    this.productosService.eliminarProducto(id).subscribe(
+      () => {
+        Swal.fire('Eliminado', 'El producto ha sido eliminado', 'success');
+        this.obtenerProductos(); // Recargar los productos después de la eliminación
+      },
+      (error) => {
+        Swal.fire('Error', 'No se pudo eliminar el producto', 'error');
+        console.error('Error al eliminar el producto:', error);
+      }
+    );
   }
 
   getIndex(index: number): number {
