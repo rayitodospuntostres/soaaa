@@ -42,6 +42,6 @@ export class ProductosAdminService {
   }
 
   guardarProducto(producto: Producto): Observable<Producto> {
-    return this.http.post<Producto>(`${this.baseUrl}save`, producto);
+    return this.http.post<Producto>(`${this.baseUrl}/save`, producto);
   }
 }
