@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  registerModel: RegisterModel = { username: '', password: '', email: '' };
+  registerModel: RegisterModel = { username: '', name:'' , password: '', email: '' };
   errorMessage: string | null = null;
 
   constructor(private authService: AuthService, private router: Router) {}
