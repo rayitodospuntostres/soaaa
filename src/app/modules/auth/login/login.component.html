@@ -1,65 +1,30 @@
+<!-- login.component.html -->
 <div class="login-container">
-  <mat-card class="login-card">
-    <mat-card-header class="">
-      <mat-card-title><h2 class="text-white">Iniciar sesión</h2></mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content>
-      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-
-        <mat-grid-list cols="2" rowHeight="64px" gutterSize="16px">
-          <!-- Email input field -->
-          <mat-grid-tile>
-            <mat-form-field appearance="fill" class="full-width">
-              <mat-label>Correo Electrónico</mat-label>
-              <input
-                matInput
-                type="email"
-                placeholder="Ingresa tu correo"
-                [(ngModel)]="credentials.email"
-                name="email"
-                required
-                #email="ngModel"
-              />
-              <mat-error *ngIf="email.invalid && email.touched">
-                El correo es obligatorio.
-              </mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-
-          <!-- Password input field -->
-          <mat-grid-tile>
-            <mat-form-field appearance="fill" class="full-width">
-              <mat-label>Contraseña</mat-label>
-              <input
-                matInput
-                type="password"
-                placeholder="Ingresa tu contraseña"
-                [(ngModel)]="credentials.password"
-                name="password"
-                required
-                #password="ngModel"
-              />
-              <mat-error *ngIf="password.invalid && password.touched">
-                La contraseña es obligatoria.
-              </mat-error>
-            </mat-form-field>
-          </mat-grid-tile>
-        </mat-grid-list>
-
-        <!-- Submit button -->
-        <div class="login-actions">
-          <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
-            Iniciar sesión
-          </button>
-        </div>
-
-        <!-- Link to register -->
-        <p class="mt-3 text-white">
-          ¿No tienes una cuenta? <a routerLink="/auth/register" class="text-danger">Crea una aquí</a>
-        </p>
-
-      </form>
-    </mat-card-content>
-  </mat-card>
+  <h2>Login</h2>
+  <form (ngSubmit)="login()">
+    <div>
+      <label for="username">Username</label>
+      <input
+        id="username"
+        type="text"
+        [(ngModel)]="loginModel.username"
+        name="username"
+        required
+      />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        [(ngModel)]="loginModel.password"
+        name="password"
+        required
+      />
+    </div>
+    <div *ngIf="errorMessage" class="error">
+      <p>{{ errorMessage }}</p>
+    </div>
+    <button type="submit">Login</button>
+  </form>
 </div>

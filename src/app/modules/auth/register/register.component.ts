@@ -1,5 +1,8 @@
+// register.component.ts
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RegisterModel } from 'src/app/models/register.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -7,25 +10,21 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  username: string = '';
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
+  registerModel: RegisterModel = { username: '', password: '', email: '' };
+  errorMessage: string | null = null;
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  // Método onSubmit sin parámetros
-  onSubmit() {
-    // Verificamos si el formulario es válido
-    if (this.username && this.email && this.password && this.confirmPassword) {
-      // Aquí puedes agregar la lógica para manejar el registro
-      console.log('Formulario enviado correctamente');
-      console.log(this.username, this.email, this.password, this.confirmPassword);
-
-      // Llamar al servicio para registrar al usuario
-      // this.authService.register(this.username, this.email, this.password);
-    } else {
-      console.log('Formulario inválido');
-    }
+  register() {
+    this.authService.register(this.registerModel).subscribe({
+      next: (response) => {
+        console.log('Registration successful', response);
+        this.router.navigate(['/login']); // Redirigir a login tras registro exitoso
+      },
+      error: (err) => {
+        console.error('Registration failed', err);
+        this.errorMessage = 'Registration failed. Please try again later.';
+      }
+    });
   }
 }
