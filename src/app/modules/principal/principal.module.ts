@@ -6,6 +6,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ProductosComponent } from './productos/productos.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 
+
 @NgModule({
   declarations: [
     InicioComponent,

@@ -14,7 +14,7 @@ export class ProductosAdmComponent implements OnInit {
   displayedColumns: string[] = ['index', 'id', 'name', 'price', 'stock', 'actions'];
   dataSource = new MatTableDataSource<Producto>();
   currentPage: number = 0; // Para almacenar la página actual
-  nuevoProducto: Producto = { id: 0, name: '', price: 0, stock: 0, description:"" };
+  nuevoProducto: Producto = { id: 0, name: '', price: 0, stock: 0, description:"" , img:""  };
   mostrarFormulario: boolean = false;  // Controla si se muestra el formulario
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -47,7 +47,7 @@ export class ProductosAdmComponent implements OnInit {
 
   abrirFormularioNuevoProducto(): void {
     this.mostrarFormulario = true;  // Muestra el formulario
-    this.nuevoProducto = { id: 0, name: '', price: 0, stock: 0, description:"" };  // Resetea el formulario
+    this.nuevoProducto = { id: 0, name: '', price: 0, stock: 0, description:"" , img:'' };  // Resetea el formulario
   }
 
   cerrarFormulario(): void {

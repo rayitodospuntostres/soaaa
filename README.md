@@ -1,27 +1,61 @@
-# PSoa2
+# Frontend SOA Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+Este es el README para el proyecto Angular `SOA-FRONTEND`.
 
-## Development server
+## Descripción
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este proyecto es una aplicación frontend desarrollada con Angular para el curso de Programación 2024. La aplicación se enfoca en la arquitectura orientada a servicios (SOA).
 
-## Code scaffolding
+## Requisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js
+- Angular CLI
 
-## Build
+## Instalación
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clona el repositorio:
+    ```bash
+    git clone  https://github.com/rayitodospuntostres/soaaa.git
+    ```
+2. Navega al directorio del proyecto:
+    ```bash
+    cd soaaa
+    ```
+3. Instala las dependencias:
+    ```bash
+    npm install
+    ```
 
-## Running unit tests
+## Ejecución
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para ejecutar la aplicación en modo de desarrollo, utiliza el siguiente comando:
+```bash
+ng serve
+```
+Luego, abre tu navegador y navega a `http://localhost:4200/`.
 
-## Running end-to-end tests
+## Construcción
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Para construir la aplicación para producción, utiliza el siguiente comando:
+```bash
+ng build
+```
+Los archivos generados se encontrarán en el directorio `dist/`.
 
-## Further help
+## Contribución
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y haz commit (`git commit -am 'Añadir nueva funcionalidad'`).
+4. Sube tus cambios (`git push origin feature/nueva-funcionalidad`).
+5. Crea un nuevo Pull Request.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
+## Contacto
+
+Para cualquier consulta o sugerencia, por favor contacta a [tu-email@dominio.com](mailto:tu-email@dominio.com).
