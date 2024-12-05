@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Producto } from '../models/producto.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductosAdminService {
-  private baseUrl = 'http://localhost:8081/api/v1/product'; // Cambiar si la URL base del backend es distinta
+  private baseUrl = `${environment.apiUrl}/soa-product-microservice/api/v1/product` // Cambiar si la URL base del backend es distinta
 
   constructor(private http: HttpClient) {}
 

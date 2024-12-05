@@ -4,12 +4,14 @@ import { Observable } from 'rxjs';
 import { LoginModel } from '../../models/login.model';
 import { RegisterModel } from '../../models/register.model';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:8085/api/v1/user';
+  private apiUrl = `${environment.apiUrl}/soa-user-microservice`;
   public isLoggedIn: boolean = false;
 
   constructor(private http: HttpClient) {
