@@ -3,10 +3,10 @@ name: Build and Push Docker Images - Frontend
 on:
   push:
     branches:
-      - master
+      - stage
   pull_request:
     branches:
-      - master
+      - stage
 
 jobs:
   build:
@@ -29,4 +29,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/soa-frontend:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/soa-frontend:stage
