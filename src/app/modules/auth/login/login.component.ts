@@ -15,7 +15,7 @@ export class LoginComponent {
   errorMessage: string | null = null;
 
   constructor(private authService: AuthService, private router: Router) {
-    
+
   }
 
 
@@ -23,8 +23,9 @@ export class LoginComponent {
     this.authService.login(this.loginModel).subscribe({
       next: (response) => {
         console.log('Login successful', response);
-        localStorage.setItem('token', response); // Guardar el token, o lo que devuelva tu backend
-        this.router.navigate(['/admin/dashboard/login']); // Redirigir al dashboard o a la ruta deseada
+        this.router.navigate(['/principal/productos']).then(() => {
+          window.location.reload(); 
+        });
       },
       error: (err) => {
         console.error('Login failed', err);

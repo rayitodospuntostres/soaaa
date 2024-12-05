@@ -15,7 +15,7 @@ import { CarService } from 'src/app/services/car.service'; // Importar el servic
 export class CarritoComponent implements OnInit {
   cartItems: Producto[] = [];
 
-  constructor(private cartService: CarService ,private router:Router) { }
+  constructor(private cartService: CarService, private router: Router) { }
 
   ngOnInit(): void {
     // Suscribirse a los cambios del carrito
@@ -65,7 +65,21 @@ export class CarritoComponent implements OnInit {
         quantity: item.quantity,
         price: item.price
       }));
-      this.router.navigate(['/principal/payment'], { state: { cartItems } });
+
+      if (cartItems.length === 0) {
+        console.warn('No items in the cart.');
+        return;
+      }
+      const isLogin = JSON.parse(localStorage.getItem('isLogin') || 'false');
+      console.log(isLogin); // Esto 
+      if (!isLogin) {
+        this.router.navigate(['/auth']);
+      } else {
+        this.router.navigate(['/principal/payment'], { state: { cartItems } });
+      }
+
+    }, error => {
+      console.error('Error fetching cart items', error);
     });
   }
 }
