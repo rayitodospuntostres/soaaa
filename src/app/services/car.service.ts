@@ -7,10 +7,10 @@ import { Producto } from '../models/producto.model';
 })
 export class CarService {
 
-  private cartItems: Producto[] = [];
+  private cartItems: Producto[] = this.loadCartItems();
   private cartItemsSubject: BehaviorSubject<Producto[]> = new BehaviorSubject<Producto[]>(this.cartItems);
 
-  constructor() {}
+  constructor() { }
 
   // Método para agregar un producto al carrito
   addToCart(product: Producto): void {
@@ -23,6 +23,7 @@ export class CarService {
       product.quantity = 1; // Si es un producto nuevo, inicializamos la cantidad
       this.cartItems.push(product);
     }
+    this.updateLocalStorage();
     this.cartItemsSubject.next(this.cartItems); // Notificar a los suscriptores
   }
 
@@ -32,6 +33,7 @@ export class CarService {
     if (existingProduct) {
       existingProduct.quantity = updatedItem.quantity; // Actualizar la cantidad
     }
+    this.updateLocalStorage();
     this.cartItemsSubject.next(this.cartItems); // Notificar cambios
   }
 
@@ -43,6 +45,18 @@ export class CarService {
   // Método para vaciar el carrito
   clearCart(): void {
     this.cartItems = [];
+    this.updateLocalStorage();
     this.cartItemsSubject.next(this.cartItems);
+  }
+
+  // Método para cargar los productos del carrito desde el localStorage
+  private loadCartItems(): Producto[] {
+    const cartItems = localStorage.getItem('cartItems');
+    return cartItems ? JSON.parse(cartItems) : [];
+  }
+
+  // Método para actualizar el localStorage con los productos actuales del carrito
+  private updateLocalStorage(): void {
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 }

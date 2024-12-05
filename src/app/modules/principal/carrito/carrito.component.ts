@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Producto } from 'src/app/models/producto.model';
 import { CarService } from 'src/app/services/car.service'; // Importar el servicio del carrito
 
@@ -14,7 +15,7 @@ import { CarService } from 'src/app/services/car.service'; // Importar el servic
 export class CarritoComponent implements OnInit {
   cartItems: Producto[] = [];
 
-  constructor(private cartService: CarService) { }
+  constructor(private cartService: CarService ,private router:Router) { }
 
   ngOnInit(): void {
     // Suscribirse a los cambios del carrito
@@ -57,7 +58,14 @@ export class CarritoComponent implements OnInit {
 
 
   checkout(): void {
-    alert('Compra realizada con éxito');
-
+    this.cartService.getCartItems().subscribe(items => {
+      const cartItems = items.map(item => ({
+        id: item.id,
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price
+      }));
+      this.router.navigate(['/principal/payment'], { state: { cartItems } });
+    });
   }
 }

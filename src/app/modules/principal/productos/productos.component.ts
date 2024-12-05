@@ -14,7 +14,6 @@ export class ProductosComponent implements OnInit {
   hasError: boolean = false;
   addCar: boolean = false;
 
-
   constructor(
     private productService: ProductService,
     private cartService: CarService,
@@ -36,13 +35,10 @@ export class ProductosComponent implements OnInit {
     );
   }
 
-
   addToCart(product: any): void {
-
     this.cartService.addToCart(product);
     this.addCar = true;
     alert('Producto añadido al carrito');
     this.addCar = false;
   }
-
 }

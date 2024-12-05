@@ -5,6 +5,7 @@ import { PrincipalRoutingModule } from './principal-routing.module';
 import { InicioComponent } from './inicio/inicio.component';
 import { ProductosComponent } from './productos/productos.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
     InicioComponent,
     ProductosComponent,
     NosotrosComponent,
+
   ],
   imports: [
     CommonModule,
