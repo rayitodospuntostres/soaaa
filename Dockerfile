@@ -1,4 +1,4 @@
-FROM node:22.10.0
+FROM node:22.10.0 AS builder
 
 WORKDIR /app
 
@@ -6,11 +6,16 @@ COPY package*.json ./
 
 RUN npm install --legacy-peer-deps
 
-COPY . .
+COPY . . 
 
 RUN npm run build --prod
 
- 
-EXPOSE 4200
+FROM nginx:alpine
 
-CMD ["npm","run","start"]
+COPY --from=builder /app/dist/p-soa-2 /usr/share/nginx/html
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
