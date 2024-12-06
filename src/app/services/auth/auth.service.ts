@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 })
 export class AuthService {
 
-  private apiUrl = `${environment.apiUrl}/soa-user-microservice`;
+  private apiUrl = `${environment.apiUrl}/user/api/v1/user`;
   public isLoggedIn: boolean = false;
 
   constructor(private http: HttpClient) {
