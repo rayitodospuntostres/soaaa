@@ -1,15 +1,17 @@
-FROM node:22.10.0 AS builder
+# Etapa de Construcción
+FROM node:22.10.0-alpine AS builder
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --legacy-peer-deps
+RUN npm ci --legacy-peer-deps
 
 COPY . . 
 
 RUN npm run build --prod
 
+ 
 FROM nginx:alpine
 
 COPY --from=builder /app/dist/p-soa-2 /usr/share/nginx/html
