@@ -8,6 +8,7 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
 import { PaymentComponent } from './payment/payment.component';
 import { HotSaleBannerComponent } from './hot-sale-banner/hot-sale-banner.component';
 import { HotSalesFreeComponent } from './hot-sales-free/hot-sales-free.component';
+import { HistoryPaymentComponent } from './history-payment/history-payment.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { HotSalesFreeComponent } from './hot-sales-free/hot-sales-free.component
     InicioComponent,
     ProductosComponent,
     NosotrosComponent,
+    HistoryPaymentComponent,
 
   ],
   imports: [
