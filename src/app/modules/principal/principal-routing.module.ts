@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'productos', component: ProductosComponent },
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'carrito', component: CarritoComponent },
-  { path: 'payment', component: PaymentComponent }
+  { path: 'payment', component: PaymentComponent },
+  { path: 'history-payment' , component: PaymentComponent}
 ];
 
 @NgModule({

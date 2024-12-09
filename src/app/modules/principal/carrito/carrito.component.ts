@@ -71,9 +71,9 @@ export class CarritoComponent implements OnInit {
         return;
       }
       const isLogin = JSON.parse(localStorage.getItem('isLogin') || 'false');
-      console.log(isLogin); // Esto 
+
       if (!isLogin) {
-        this.router.navigate(['/auth']);
+        this.router.navigate(['/auth/login']);
       } else {
         this.router.navigate(['/principal/payment'], { state: { cartItems } });
       }

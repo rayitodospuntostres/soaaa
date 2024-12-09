@@ -59,4 +59,6 @@ export class CarService {
   private updateLocalStorage(): void {
     localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
+
+  
 }

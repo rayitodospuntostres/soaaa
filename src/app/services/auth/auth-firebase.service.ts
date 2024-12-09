@@ -4,13 +4,11 @@ import { FacebookAuthProvider, GoogleAuthProvider } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthFirebaseService {
-
+  
   userData: any;
 
   constructor(
@@ -19,36 +17,45 @@ export class AuthFirebaseService {
     public router: Router,
     public ngZone: NgZone
   ) {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        console.log(this.userData);
-      } else {
-        this.userData = null;
-        localStorage.removeItem('user');
-        console.log('No hay usuario');
-      }
-    });
+
   }
 
   signIn(email: string, password: string) {
-    return this.afAuth.signInWithEmailAndPassword(email, password);
+    return this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.userData = result.user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        localStorage.setItem('isLogin', JSON.stringify(true)); 
+        this.router.navigate(['/home']);
+      })
+      .catch((error) => {
+        window.alert(error.message);
+      });
   }
 
   signUp(email: string, password: string) {
-    return this.afAuth.createUserWithEmailAndPassword(email, password);
+    return this.afAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.userData = result.user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        localStorage.setItem('isLogin', JSON.stringify(true)); 
+        this.router.navigate(['/home']);
+      })
+      .catch((error) => {
+        window.alert(error.message);
+      });
   }
 
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return (user !== null) ? true : false;
+    return user !== null && user.uid ? true : false; // Verificar si existe y tiene UID
   }
 
   googleAuth() {
     return this.authLogin(new GoogleAuthProvider());
   }
-
 
   facebookAuth() {
     return this.authLogin(new FacebookAuthProvider());
@@ -56,16 +63,20 @@ export class AuthFirebaseService {
 
   async authLogin(provider: any) {
     try {
-      await this.afAuth.signInWithPopup(provider);
+      const result = await this.afAuth.signInWithPopup(provider);
+      this.userData = result.user;
+      localStorage.setItem('user', JSON.stringify(this.userData));
+      localStorage.setItem('isLogin', JSON.stringify(true));  
       this.router.navigate(['/home']);
     } catch (error) {
       window.alert(error);
     }
   }
-
+ 
   async signOut() {
     await this.afAuth.signOut();
     localStorage.removeItem('user');
-    this.router.navigate(['/home']);
+    localStorage.setItem('isLogin', JSON.stringify(false));  
+    this.router.navigate(['/']);
   }
 }
